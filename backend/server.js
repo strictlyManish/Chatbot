@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const Connect = require("./src/db/db");
 const userRoutes = require("./src/routes/user.routes");
+const MainRoutes = require("./src/routes/main.routes");
 
 // Middlewares here --
 app.use(express.json());
@@ -10,6 +11,7 @@ app.use(express.json());
 //api --
 
 app.use("/api", userRoutes)
+app.use("/", MainRoutes)
 
 
 
