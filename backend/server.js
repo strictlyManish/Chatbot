@@ -6,6 +6,7 @@ const userRoutes = require("./src/routes/user.routes");
 const MainRoutes = require("./src/routes/main.routes");
 const cookie_prser = require("cookie-parser");
 
+
 // Middlewares here --
 app.use(express.json());
 app.use(cookie_prser())
@@ -13,9 +14,6 @@ app.use(cookie_prser())
 
 app.use("/api", userRoutes)
 app.use("/", MainRoutes)
-
-
-
 
 
 Connect()
