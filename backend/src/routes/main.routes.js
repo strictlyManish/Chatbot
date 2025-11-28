@@ -5,6 +5,6 @@ const routes = express.Router();
 
 
 
-routes.post("/",authController, ChatController);
+routes.post("/chat",authController, ChatController);
 
 module.exports = routes;
