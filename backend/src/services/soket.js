@@ -41,11 +41,11 @@ const createSocketServer = (app) => {
 
 
 
-        socket.on("myEvent", (data) => {
-            console.log("Received from client:", data);
+        socket.on("myEvent", (payload) => {
+            console.log("Received from client:", payload);
 
             // send back a response
-            socket.emit("myEventResponse", { status: "ok", got: data });
+            socket.emit("myEventResponse", { status: "ok",payload});
         });
 
         socket.on("disconnect", () => {
