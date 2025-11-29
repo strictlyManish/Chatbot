@@ -1,8 +1,8 @@
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const jwt = require("jsonwebtoken")
-const cookie = require("cookie");
 const userSchema = require("../models/userModel");
+const GeminiCall = require("./ai.service");
 
 const createSocketServer = (app) => {
     const httpServer = createServer(app);
@@ -36,16 +36,16 @@ const createSocketServer = (app) => {
 
     });
 
-    io.on("connection", (socket) => {
+    io.on("connection",  (socket) => {
         console.log("User connected:", socket.user?.username);
 
 
-
-        socket.on("myEvent", (payload) => {
+        socket.on("myEvent", async (payload) => {
             console.log("Received from client:", payload);
 
-            // send back a response
-            socket.emit("myEventResponse", { status: "ok",payload});
+           const response = await GeminiCall(payload.text)
+
+            socket.emit("myEventResponse", { status: "ok",response});
         });
 
         socket.on("disconnect", () => {
