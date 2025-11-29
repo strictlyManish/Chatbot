@@ -26,6 +26,7 @@ const RegisterController = async (req, res) => {
         })
 
     } catch (error) {
+        console.log(error)
         res.status(404).json({
             message: 'something not good'
         })
@@ -56,6 +57,7 @@ const LoginController = async (req, res) => {
             user
         })
     } catch (error) {
+        console.log(error)
         res.status(404).json({
             message: 'something not good'
         })
